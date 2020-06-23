@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<InputText /> snapshot component 1`] = `
+<input
+  aria-label="input-text"
+  class="inputText"
+  type="text"
+  value=""
+/>
+`;

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<InputGroupContainer /> snapshot component 1`] = `
+<div>
+  <div>
+    <span
+      class="label-text"
+    >
+      User Name:
+    </span>
+  </div>
+  <input
+    aria-label="input-text"
+    class="inputText"
+    placeholder="Enter a User Name"
+    value=""
+  />
+</div>
+`;
