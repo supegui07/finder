@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./InputText.scss";
 
-const InputText = ({ type, value, placeholder, onChange, inputTextRef }) => {
+const InputText = React.memo(({ type, value, placeholder, onChange, inputTextRef }) => {
   const handleChange = (e) => {
     onChange(e.target.value);
   };
@@ -18,7 +18,7 @@ const InputText = ({ type, value, placeholder, onChange, inputTextRef }) => {
       ref={inputTextRef}
     />
   );
-};
+});
 
 InputText.propTypes = {
   type: PropTypes.string,

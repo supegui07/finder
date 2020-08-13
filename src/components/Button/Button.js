@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Button.scss";
 
-const Button = ({ text, type, onClick }) => {
+
+const Button = React.memo(({ text, type, onClick }) => {
   const handleClick = (e) => {
     e.preventDefault();
     onClick(e);
@@ -17,7 +18,7 @@ const Button = ({ text, type, onClick }) => {
       value={text}
     />
   );
-};
+})
 
 Button.propTypes = {
   text: PropTypes.string,

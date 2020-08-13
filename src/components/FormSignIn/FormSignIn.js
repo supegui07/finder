@@ -4,7 +4,7 @@ import FormContainerSignIn from "./FormSignInContainer";
 import InputGroup from "../InputGroup/InputGroup";
 import Button from "../Button/Button";
 
-const FormSignIn = ({ onSignIn }) => {
+const FormSignIn = React.memo(({ onSignIn }) => {
   const initialState = {
     form: {
       userName: "",
@@ -49,7 +49,7 @@ const FormSignIn = ({ onSignIn }) => {
       </FormContainerSignIn>
     </div>
   );
-};
+});
 
 FormSignIn.propTypes = {
   onSignIn: PropTypes.func,
