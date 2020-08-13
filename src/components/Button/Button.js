@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useCallback } from "react";
 import PropTypes from "prop-types";
 import "./Button.scss";
 
 
 const Button = React.memo(({ text, type, onClick }) => {
-  const handleClick = (e) => {
+  const handleClick = useCallback((e) => {
     e.preventDefault();
     onClick(e);
-  };
+  }, [onClick]);
 
   return (
     <input

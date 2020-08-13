@@ -8,7 +8,9 @@ class InputGroupContainer extends Component {
       onChange: PropTypes.func,
     };
   }
+
   state = { inputValue: "" };
+
   inputTextRef = React.createRef();
 
   getInputTextProps = ({ onChange, ...props }) => {

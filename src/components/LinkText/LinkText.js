@@ -9,7 +9,7 @@ const LinkText = ({ text, pathTo, onClick, isSelected }) => {
       to={pathTo}
       className={classNames('link-item', {'selected': isSelected})}
       onClick={() => onClick()}
-      >
+    >
       {text}
     </Link>
   );

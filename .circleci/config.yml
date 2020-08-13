@@ -1,7 +1,115 @@
 version: 2.1
 orbs:
   node: circleci/node@3.0.0
-workflows:
-  node-tests:
-    jobs:
-      - node/test
+
+jobs:
+  install:
+    docker:
+      - image: circleci/node:dubnium
+    working_directory: /home/circleci/finder
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Install
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - persist_to_workspace:
+          root: /home/circleci/finder
+          paths:
+            - node_modules
+
+  lint:
+    docker:
+      - image: circleci/node:dubnium
+    working_directory: /home/circleci/finder
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/finder
+      - run:
+          name: Lint
+          command: npm run lint
+
+  build:
+    docker:
+      - image: circleci/node:dubnium
+    working_directory: /home/circleci/finder
+    parallelism: 2
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/finder
+      - run:
+          name: Build Project
+          command: npm run build
+      - store_artifacts:
+          path: coverage
+          destination: coverage
+      - persist_to_workspace:
+          root: /home/circleci/finder
+          paths:
+            - dist
+
+  test:
+    machine:
+      image: circleci/classic:201808-01
+    working_directory: /home/circleci/finder
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/finder
+      - node/install:
+          install-yarn: false
+          node-version: 10.19.0
+      - run: node --version
+      - run:
+          name: Run Unit Tests & Integration Tests
+          command: npm run test
+      - store_test_results:
+          path: test_reports
+      - store_artifacts:
+          path: coverage
+      - store_artifacts:
+          path: docker-logs.txt
+
+  workflows:
+    version: 2
+    build-deploy-dev:
+      jobs:
+        - install:
+            context: npm
+        - lint:
+            requires:
+              - install
+        # - license-checks:
+        #     requires:
+        #       - install
+        # - security-checks:
+        #     requires:
+        #       - install
+        - build:
+            requires:
+              - install
+        - test:
+            context: npm
+            requires:
+              - install
+              - build
+        # - generate-docker-artifact:
+        #     context: npm
+        #     filters:
+        #       branches:
+        #         only:
+        #           - develop
+        #           - master
+            requires:
+              - build
+              - lint
+              # - license-checks
+              # - security-checks
+              - test

@@ -4,7 +4,7 @@ import FormSignInConnectedContainer from "../../components/FormSignIn/FormSignIn
 const PublicLanding = () => {
   return (
     <div>
-      <FormSignInConnectedContainer/>
+      <FormSignInConnectedContainer />
     </div>
   );
 };

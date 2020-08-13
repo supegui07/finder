@@ -8,6 +8,7 @@ class FormContainerSignIn extends Component {
       initialState: PropTypes.object,
     };
   }
+
   static defaultProps = {
     initialState: {
       form: {
@@ -15,7 +16,9 @@ class FormContainerSignIn extends Component {
       },
     },
   };
+
   initialState = { ...this.props.initialState };
+
   state = this.initialState;
 
   getFormProps = ({ onSubmit }) => {

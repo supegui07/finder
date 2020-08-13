@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import PropTypes from "prop-types";
 import FormContainerSignIn from "./FormSignInContainer";
 import InputGroup from "../InputGroup/InputGroup";
@@ -16,9 +16,9 @@ const FormSignIn = React.memo(({ onSignIn }) => {
     // console.log(key, value);
   };
 
-  const handleSubmit = (user) => {
+  const handleSubmit = useCallback((user) => {
     onSignIn(user);
-  };
+  }, [onSignIn]);
 
   return (
     <div>
