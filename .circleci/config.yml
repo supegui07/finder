@@ -107,9 +107,9 @@ jobs:
         #         only:
         #           - develop
         #           - master
-            requires:
-              - build
-              - lint
+            #requires:
+              #- build
+              #- lint
               # - license-checks
               # - security-checks
-              - test
+              #- test
