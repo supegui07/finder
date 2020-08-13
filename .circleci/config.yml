@@ -86,12 +86,6 @@ jobs:
         - lint:
             requires:
               - install
-        # - license-checks:
-        #     requires:
-        #       - install
-        # - security-checks:
-        #     requires:
-        #       - install
         - build:
             requires:
               - install
@@ -100,16 +94,3 @@ jobs:
             requires:
               - install
               - build
-        # - generate-docker-artifact:
-        #     context: npm
-        #     filters:
-        #       branches:
-        #         only:
-        #           - develop
-        #           - master
-            #requires:
-              #- build
-              #- lint
-              # - license-checks
-              # - security-checks
-              #- test
