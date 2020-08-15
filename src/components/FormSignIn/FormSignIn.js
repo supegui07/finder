@@ -13,7 +13,7 @@ const FormSignIn = React.memo(({ onSignIn }) => {
   };
 
   const handleInputChange = (key, value) => {
-    // console.log(key, value);
+    console.log(key, value);
   };
 
   const handleSubmit = useCallback((user) => {
@@ -52,7 +52,7 @@ const FormSignIn = React.memo(({ onSignIn }) => {
 });
 
 FormSignIn.propTypes = {
-  onSignIn: PropTypes.func,
+  onSignIn: PropTypes.func.isRequired,
 };
 
 export default FormSignIn;

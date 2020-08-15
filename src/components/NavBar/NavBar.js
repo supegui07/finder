@@ -6,8 +6,8 @@ import './NavBar.scss';
 const NavBar = () => {
   const [selected, setSelected] = useState('')
 
-  const handleClick = (selected) => {
-    setSelected(selected)
+  const handleClick = (selectedLink) => {
+    setSelected(selectedLink)
   }
 
   return (

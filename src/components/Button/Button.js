@@ -2,7 +2,6 @@ import React, { useCallback } from "react";
 import PropTypes from "prop-types";
 import "./Button.scss";
 
-
 const Button = React.memo(({ text, type, onClick }) => {
   const handleClick = useCallback((e) => {
     e.preventDefault();
@@ -22,7 +21,13 @@ const Button = React.memo(({ text, type, onClick }) => {
 
 Button.propTypes = {
   text: PropTypes.string,
-  onClick: PropTypes.func,
+  type: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
+Button.defaultProps = {
+  text: ''
+}
+
+Button.displayName = 'Button'
 export default Button;

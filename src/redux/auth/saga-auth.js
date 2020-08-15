@@ -1,8 +1,8 @@
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { SIGN_IN, signInSuccess } from "./actions";
 import api from "./services";
-import { useLocalStorage } from "../../utils/use-local-store";
-import { enumTypesAuthLocalStorage } from "../../utils/constants";
+// import { useLocalStorage } from "../../utils/use-local-store";
+// import { enumTypesAuthLocalStorage } from "../../utils/constants";
 
 function* signIn(action) {
   try {
@@ -15,9 +15,8 @@ function* signIn(action) {
 
     yield put(signInSuccess(request.data))
 
-    const { authStoredProp, profile } = enumTypesAuthLocalStorage;
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useLocalStorage(request.data, authStoredProp, profile)
+    // const { authStoredProp, profile } = enumTypesAuthLocalStorage;
+    // useLocalStorage(request.data, authStoredProp, profile)
   } catch (error) {
     console.log(error);
   }

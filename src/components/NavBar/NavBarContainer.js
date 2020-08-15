@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
+import PropTypes from "prop-types";
 
 class NavBarContainer extends Component {
 
   handleClick = () => {
-    this.props.onClick()
+    const { onClick } = this.props;
+    onClick()
   }
 
   getLinkProps = (props) => {
@@ -21,10 +23,15 @@ class NavBarContainer extends Component {
   }
 
   render() {
-    return this.props.children
-      ? this.props.children(this.getStateAndHelpers())
+    const { children } = this.props;
+    return children
+      ? children(this.getStateAndHelpers())
       : null;
   }
+}
+
+NavBarContainer.propTypes = {
+  onClick: PropTypes.func.isRequired
 }
 
 export default NavBarContainer;

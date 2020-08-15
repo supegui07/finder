@@ -31,6 +31,14 @@
     "prettier/prettier": "off",
     "import/prefer-default-export": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+    "react/display-name": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/prop-types": [2, { "ignore": ["children"] }],
+    "react/sort-comp": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "react/forbid-prop-types": "off",
+    "no-use-before-define": "off",
+    "no-param-reassign": "off"
   }
 }
