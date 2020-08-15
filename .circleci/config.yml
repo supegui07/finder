@@ -83,3 +83,14 @@ workflows:
     jobs:
       - install:
           context: npm
+      - lint:
+        requires:
+          - install
+      - build:
+          requires:
+            - install
+      - test:
+          context: npm
+          requires:
+            - install
+            - build
