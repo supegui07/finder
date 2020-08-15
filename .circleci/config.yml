@@ -77,20 +77,9 @@ jobs:
       - store_artifacts:
           path: docker-logs.txt
 
-  workflows:
-    version: 2
-    build-deploy-dev:
-      jobs:
-        - install:
-            context: npm
-        - lint:
-            requires:
-              - install
-        - build:
-            requires:
-              - install
-        - test:
-            context: npm
-            requires:
-              - install
-              - build
+workflows:
+  version: 2
+  build-deploy-dev:
+    jobs:
+      - install:
+          context: npm
