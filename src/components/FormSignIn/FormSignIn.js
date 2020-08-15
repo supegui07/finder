@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useCallback } from "react";
 import PropTypes from "prop-types";
 import FormContainerSignIn from "./FormSignInContainer";
 import InputGroup from "../InputGroup/InputGroup";
 import Button from "../Button/Button";
 
-const FormSignIn = ({ onSignIn }) => {
+const FormSignIn = React.memo(({ onSignIn }) => {
   const initialState = {
     form: {
       userName: "",
@@ -13,12 +13,12 @@ const FormSignIn = ({ onSignIn }) => {
   };
 
   const handleInputChange = (key, value) => {
-    // console.log(key, value);
+    console.log(key, value);
   };
 
-  const handleSubmit = (user) => {
+  const handleSubmit = useCallback((user) => {
     onSignIn(user);
-  };
+  }, [onSignIn]);
 
   return (
     <div>
@@ -49,10 +49,10 @@ const FormSignIn = ({ onSignIn }) => {
       </FormContainerSignIn>
     </div>
   );
-};
+});
 
 FormSignIn.propTypes = {
-  onSignIn: PropTypes.func,
+  onSignIn: PropTypes.func.isRequired,
 };
 
 export default FormSignIn;

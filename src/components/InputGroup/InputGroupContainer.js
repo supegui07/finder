@@ -1,19 +1,17 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 
 class InputGroupContainer extends Component {
-  static get propTypes() {
-    return {
-      children: PropTypes.any,
-      onChange: PropTypes.func,
-    };
+  constructor(props) {
+    super(props);
+    this.state = { inputValue: "" };
   }
-  state = { inputValue: "" };
+
   inputTextRef = React.createRef();
 
   getInputTextProps = ({ onChange, ...props }) => {
+    const { inputValue } = this.state;
     return {
-      value: this.state.inputValue,
+      value: inputValue,
       inputTextRef: this.inputTextRef,
       onChange: (value) => {
         this.setState({ inputValue: value }, () => onChange(value));
@@ -37,8 +35,9 @@ class InputGroupContainer extends Component {
   }
 
   render() {
-    return this.props.children
-      ? this.props.children(this.getStateAndHelpers())
+    const {children} = this.props; 
+    return children
+      ? children(this.getStateAndHelpers())
       : null;
   }
 }

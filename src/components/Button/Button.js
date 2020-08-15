@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useCallback } from "react";
 import PropTypes from "prop-types";
 import "./Button.scss";
 
-const Button = ({ text, type, onClick }) => {
-  const handleClick = (e) => {
+const Button = React.memo(({ text, type, onClick }) => {
+  const handleClick = useCallback((e) => {
     e.preventDefault();
     onClick(e);
-  };
+  }, [onClick]);
 
   return (
     <input
@@ -17,11 +17,17 @@ const Button = ({ text, type, onClick }) => {
       value={text}
     />
   );
-};
+})
 
 Button.propTypes = {
   text: PropTypes.string,
-  onClick: PropTypes.func,
+  type: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
+Button.defaultProps = {
+  text: ''
+}
+
+Button.displayName = 'Button'
 export default Button;

@@ -1,38 +1,30 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import PropTypes from "prop-types";
 
 class FormContainerSignIn extends Component {
-  static get propTypes() {
-    return {
-      children: PropTypes.any,
-      initialState: PropTypes.object,
-    };
+  constructor(props){
+    super(props);
+    const { initialState } = this.props;
+    this.state = initialState; 
   }
-  static defaultProps = {
-    initialState: {
-      form: {
-        "": "",
-      },
-    },
-  };
-  initialState = { ...this.props.initialState };
-  state = this.initialState;
 
   getFormProps = ({ onSubmit }) => {
+    const { form } = this.state;
     return {
       onSubmit: (e) => {
         e.preventDefault();
-        onSubmit(this.state.form);
+        onSubmit(form);
       },
     };
   };
 
   getInputProps = (key, onChange) => {
+    const { form } = this.state;
     return {
-      value: this.state.form[key],
+      value: form[key],
       onChange: (value) => {
         this.setState(
-          { form: { ...this.state.form, [key]: value } },
+          { form: { ...form, [key]: value } },
           () => onChange && onChange(key, value)
         );
       },
@@ -47,9 +39,22 @@ class FormContainerSignIn extends Component {
   }
 
   render() {
-    return this.props.children
-      ? this.props.children(this.getStateAndHelpers())
+    const { children } = this.props;
+    return children
+      ? children(this.getStateAndHelpers())
       : null;
+  }
+}
+
+FormContainerSignIn.propTypes = {
+  initialState: PropTypes.object,
+}
+
+FormContainerSignIn.defaultProps = {
+  initialState: {
+    form: {
+      "": "",
+    },
   }
 }
 

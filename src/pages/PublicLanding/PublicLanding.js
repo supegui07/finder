@@ -1,9 +1,10 @@
 import React from 'react';
+import FormSignInConnectedContainer from "../../components/FormSignIn/FormSignInConnectedContainer";
 
 const PublicLanding = () => {
   return (
     <div>
-      Public Landing
+      <FormSignInConnectedContainer />
     </div>
   );
 };
