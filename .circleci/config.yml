@@ -84,8 +84,8 @@ workflows:
       - install:
           context: npm
       - lint:
-        requires:
-          - install
+          requires:
+            - install
       - build:
           requires:
             - install
