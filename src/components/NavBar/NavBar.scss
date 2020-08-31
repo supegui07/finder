@@ -4,5 +4,9 @@
     display: flex;
     list-style: none;
     justify-content: flex-start;
+
+    .nav-item {
+      font-size: 18px;
+    }
   }
 }

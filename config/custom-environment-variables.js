@@ -1,5 +1,5 @@
 module.exports = {
-  pingdom: {
-    token: 'PINGDOM_TOKEN',
+  EXTERNAL_API: {
+    token: 'API_TOKEN',
   },
 };
