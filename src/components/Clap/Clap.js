@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import classNames from "classnames";
+import PropTypes from "prop-types";
 import ClapIcon from './ClapIcon/ClapIcon';
 import './Clap.scss'
 import ClapCount from './ClapCount/ClapCount';
@@ -19,8 +20,7 @@ const { Provider } = ClapContext;
 const Clap = ({
   children,
   className = '',
-  style : userStyles = {},
-  onClap = () => {}
+  style : userStyles = {}
 }) => {
   const [clapState, setClapState] = useState(initialState)
   const [{ refClap, refCount, refTotal }, setRefState ] = useState({})
@@ -58,6 +58,7 @@ const Clap = ({
   return (
     <Provider value={getProviderValue}>
       <button
+        type="button"
         className={classNames('clap', className)}
         style={userStyles}
         onClick={handleClapClick}
@@ -74,5 +75,15 @@ const Clap = ({
 Clap.Icon = ClapIcon;
 Clap.Count = ClapCount;
 Clap.Total = ClapTotal;
+
+Clap.propTypes = {
+  className: PropTypes.string,
+  style: PropTypes.string
+};
+
+Clap.defaultProps = {
+  className: '',
+  style: ''
+}
 
 export default Clap;

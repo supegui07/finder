@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import classNames from "classnames";
 import './ClapIcon.scss'
 
@@ -18,5 +19,15 @@ const ClapIcon = ({ className = '', style: userStyles = {}}) => {
     </span>
   );
 };
+
+ClapIcon.propTypes = {
+  className: PropTypes.string,
+  style: PropTypes.string
+};
+
+ClapIcon.defaultProps = {
+  className: '',
+  style: ''
+}
 
 export default ClapIcon;
