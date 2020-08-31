@@ -53,7 +53,7 @@ jobs:
       - persist_to_workspace:
           root: /home/circleci/finder
           paths:
-            - dist
+            - build
 
   test:
     machine:
