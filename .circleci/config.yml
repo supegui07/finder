@@ -6,7 +6,7 @@ jobs:
   install:
     docker:
       - image: circleci/node:dubnium
-    working_directory: /home/circleci/finder
+    working_directory: .
     steps:
       - checkout
       - restore_cache:
@@ -19,18 +19,18 @@ jobs:
           paths:
             - ./node_modules
       - persist_to_workspace:
-          root: /home/circleci/finder
+          root: .
           paths:
             - node_modules
 
   lint:
     docker:
       - image: circleci/node:dubnium
-    working_directory: /home/circleci/finder
+    working_directory: .
     steps:
       - checkout
       - attach_workspace:
-          at: /home/circleci/finder
+          at: .
       - run:
           name: Lint
           command: npm run lint
@@ -38,12 +38,12 @@ jobs:
   build:
     docker:
       - image: circleci/node:dubnium
-    working_directory: /home/circleci/finder
+    working_directory: .
     parallelism: 2
     steps:
       - checkout
       - attach_workspace:
-          at: /home/circleci/finder
+          at: .
       - run:
           name: Build Project
           command: npm run build
@@ -51,18 +51,18 @@ jobs:
           path: coverage
           destination: coverage
       - persist_to_workspace:
-          root: /home/circleci/finder
+          root: .
           paths:
             - dist
 
   test:
     machine:
       image: circleci/classic:201808-01
-    working_directory: /home/circleci/finder
+    working_directory: .
     steps:
       - checkout
       - attach_workspace:
-          at: /home/circleci/finder
+          at: .
       - node/install:
           install-yarn: false
           node-version: 10.19.0
