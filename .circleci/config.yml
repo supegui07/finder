@@ -92,10 +92,10 @@ jobs:
             echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
             gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://us.gcr.io
             echo $CIRCLE_SHA1 > VERSION
-            docker build -t us.gcr.io/docker-images/finder:$CIRCLE_SHA1 . --target RELEASE
-            docker tag us.gcr.io/docker-images/finder:$CIRCLE_SHA1 us.gcr.io/docker-images/finder:latest
-            docker push us.gcr.io/docker-images/finder:$CIRCLE_SHA1
-            docker push us.gcr.io/docker-images/finder:latest
+            docker build -t us.gcr.io/supegui/finder:$CIRCLE_SHA1 . --target RELEASE
+            docker tag us.gcr.io/supegui/finder:$CIRCLE_SHA1 us.gcr.io/supegui/finder:latest
+            docker push us.gcr.io/supegui/finder:$CIRCLE_SHA1
+            docker push us.gcr.io/supegui/finder:latest
 
 workflows:
   version: 2
