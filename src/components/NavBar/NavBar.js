@@ -17,13 +17,22 @@ const NavBar = () => {
           <nav className="nav">
             <ul className="nav-bar">
               <li>
-                <LinkText {...getLinkProps({text: 'Finder'})} />
+                <LinkText 
+                  {...getLinkProps({text: 'Finder'})}
+                  className='nav-item'
+                />
               </li>
               <li>
-                <LinkText {...getLinkProps({text: 'Sign Up'})} />
+                <LinkText 
+                  {...getLinkProps({text: 'Sign Up'})}
+                  className='nav-item'
+                />
               </li>
               <li>
-                <LinkText {...getLinkProps({text: 'Sign In'})} />
+                <LinkText 
+                  {...getLinkProps({text: 'Sign In'})} 
+                  className='nav-item'
+                />
               </li>
             </ul>
           </nav>

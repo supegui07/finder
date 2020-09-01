@@ -4,6 +4,7 @@ exports[`<InputText /> snapshot component 1`] = `
 <input
   aria-label="input-text"
   class="inputText"
+  placeholder=""
   type="text"
   value=""
 />

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import FormContainerSignIn from "./FormSignInContainer";
 import InputGroup from "../InputGroup/InputGroup";
 import Button from "../Button/Button";
+import "./FormSignIn.scss";
 
 const FormSignIn = React.memo(({ onSignIn }) => {
   const initialState = {
@@ -21,7 +22,7 @@ const FormSignIn = React.memo(({ onSignIn }) => {
   }, [onSignIn]);
 
   return (
-    <div>
+    <div className="form-sign-in">
       <FormContainerSignIn initialState={initialState}>
         {({ getFormProps, getInputProps }) => {
           return (

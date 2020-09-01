@@ -1,0 +1,30 @@
+.clap {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background: none;
+  outline: 1px solid transparent;
+  user-select: none;
+
+  &:hover {
+    cursor: pointer;
+    transition: border-color 0.3s ease-in;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    border-radius: 50%;
+    width: 79px;
+    height: 79px;
+  }
+  
+  &:hover:after {
+    animation: shockwave 1s ease-in infinite;
+  }
+}

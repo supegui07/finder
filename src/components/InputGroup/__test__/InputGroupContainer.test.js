@@ -10,6 +10,7 @@ describe("<InputGroupContainer />", () => {
     value: "",
     onChange: jest.fn(),
     placeholder: "Enter a User Name",
+    type: "text",
   };
 
   const setup = () => {
