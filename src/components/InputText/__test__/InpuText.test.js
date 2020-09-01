@@ -4,7 +4,7 @@ import InputText from "../InputText";
 
 describe("<InputText />", () => {
   const fakeInputText = {
-   'aria-label': "input-text",
+    'aria-label': "input-text",
     class: "inputText",
     type: "text",
     value: "",
