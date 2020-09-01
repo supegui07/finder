@@ -77,6 +77,26 @@ jobs:
       - store_artifacts:
           path: docker-logs.txt
 
+  generate-docker-artifact:
+    docker:
+      - image: google/cloud-sdk
+    working_directory: /home/circleci/finder
+    steps:
+      - checkout
+      - attach_workspace:
+          at: /home/circleci/finder
+      - setup_remote_docker
+      - run:
+          name: Setup Google Cloud SDK && Push Docker Artifact
+          command: |
+            echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
+            gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://us.gcr.io
+            echo $CIRCLE_SHA1 > VERSION
+            docker build -t us.gcr.io/docker-images/finder:$CIRCLE_SHA1 . --target RELEASE
+            docker tag us.gcr.io/docker-images/finder:$CIRCLE_SHA1 us.gcr.io/docker-images/finder:latest
+            docker push us.gcr.io/docker-images/finder:$CIRCLE_SHA1
+            docker push us.gcr.io/docker-images/finder:latest
+
 workflows:
   version: 2
   build-deploy-dev:
@@ -94,3 +114,15 @@ workflows:
           requires:
             - install
             - build
+      - generate-docker-artifact:
+          context: npm
+          filters:
+            branches:
+              only:
+                - develop
+                - master
+                - clap-component
+          requires:
+            - build
+            - lint
+            - test
