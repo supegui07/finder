@@ -13,6 +13,7 @@ exports[`<InputGroupContainer /> snapshot component 1`] = `
     aria-label="input-text"
     class="inputText"
     placeholder="Enter a User Name"
+    type="text"
     value=""
   />
 </div>

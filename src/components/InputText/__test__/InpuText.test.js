@@ -4,8 +4,11 @@ import InputText from "../InputText";
 
 describe("<InputText />", () => {
   const fakeInputText = {
+   'aria-label': "input-text",
+    class: "inputText",
     type: "text",
     value: "",
+    placeholder: "",
     inputTextRef: React.createRef(),
   };
   const handleChange = jest.fn();
@@ -28,7 +31,6 @@ describe("<InputText />", () => {
   it("snapshot component", () => {
     const { container } = setup();
     const input = container.firstChild;
-
     expect(input).toMatchSnapshot();
   });
 });
